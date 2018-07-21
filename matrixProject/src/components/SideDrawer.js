@@ -1,5 +1,5 @@
-import FirstScreen from './FirstScreen';
-import SecondScreen from './SecondScreen';
+import FirstScreen from './drawerScreen/FirstScreen';
+import SecondScreen from './drawerScreen/SecondScreen';
 import {DrawerNavigator} from "react-navigation";
 
 const SideDrawer= DrawerNavigator({

@@ -10,7 +10,9 @@ import ScoreBoard from './components/ScoreBoard';
 import CommentPage from './components/commentPage';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ProfilePage from './components/ProfilePage'
-import SideDrawer from './components/SideDrawer';
+
+import FirstScreen from "./components/drawerScreen/FirstScreen";
+import SecondScreen from './components/drawerScreen/SecondScreen';
 
 
 
@@ -51,18 +53,29 @@ const Router = StackNavigator({
 //     screen: SideDrawer
 // });
 
-const profilePageStack = StackNavigator({
-    ProfilePage: {
-        screen: ProfilePage,
-        title:'ProfilePage',
+// const profilePageStack = StackNavigator({
+//     ProfilePage: {
+//         screen: ProfilePage,
+//         title:'ProfilePage',
+//     },
+//     // sideDrawerPage: {
+//     //     screen: SideDrawer,
+//     //     title: 'sideDrawer'
+//     // }
+// });
+const ProfilePageStack = StackNavigator({
+    ProfilePage:{
+        screen:ProfilePage,
+        title:'ProfilePage'
     },
-    sideDrawerPage: {
-        screen: SideDrawer,
-        title: 'sideDrawer'
-    }
-});
-
-
+    // FirstScreen:{
+    //     screen:FirstScreen
+    //
+    // },
+    // SecondScreen:{
+    //     screen:SecondScreen
+    // }
+})
 const ChallengePageStack = StackNavigator({
 
     ChallengePage:{
@@ -71,6 +84,7 @@ const ChallengePageStack = StackNavigator({
         title:'challengePage'
         }
     },
+    ProfilePage: ProfilePageStack,
     ChallengeDetailPage: {
         screen: ChallengeDetailPage,
         title:'challengeDetailPage'
@@ -92,7 +106,7 @@ const ChallengePageStack = StackNavigator({
 
         }),
     },
-    profilePage: profilePageStack
+
 
 
 });
