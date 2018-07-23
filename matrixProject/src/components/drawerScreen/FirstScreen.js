@@ -1,7 +1,7 @@
 import React from 'react';
-import  {Text, View , Button, Image, List, FlatList, ListItem} from 'react-native';
+import  {Text, View , Button, Image, List, FlatList, ListItem,StyleSheet} from 'react-native';
 import {DrawerActions} from "react-navigation";
-import { Header, Left, Icon} from 'native-base';
+import { Header, Left, Icon, Right} from 'native-base';
 
 
 
@@ -18,17 +18,26 @@ export default class FirstScreen extends React.Component {
     //     }
     // };
     state={
-        data:[{title: 'Title Text', key: 'item1'},
-            {title: 'ma', key: 'item2'}]
+        data:[{title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},
+            {title: '您已经赞助挑战您已经赞助挑战您已经赞助挑战您已经赞助挑战您已经赞助挑战您已经赞助挑战您已经赞助挑战', key: 'item2', time:'2018-10-24'},
+            {title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},
+            {title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},
+            {title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},
+            {title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},
+            {title: '消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容消息内容', key: 'item1', time:'2018-10-24'},],
+
 
 
     };
 
     _renderItem = ({item}) => (
-        <View>
-        <Text>
+        <View >
+        <Text style={styles.bubble}>
             {item.title}
         </Text>
+            <Text style={styles.time}>
+                {item.time}
+            </Text>
         </View>
 
     );
@@ -44,24 +53,65 @@ export default class FirstScreen extends React.Component {
                               onPress={()=>this.props.navigation.dispatch(DrawerActions.openDrawer())}/>
                     </Left>
                 </Header>
-            <View style={{height:'30%'}}>
+            <View style={{height:'20%'}}>
                 <Text>头像</Text>
             </View>
-            <View style={{height:'30%'}}>
-            <Text>消息列表</Text>
-    </View>
-        <View style={{height:'30%'}}>
+            <View style={styles.List} >
+                <Left style={{ display:'flex',
+                    flexDirection: 'row',}}>
+                <Icon name='chatboxes' style={{width: '10%'}}/>
+            <Text style={{width: '40%'}}>消息列表</Text>
+                </Left>
 
-              <FlatList data={[{title: 'Title Text', key: 'item1'}, {title: 'ma', key: 'item2'}]}
+                 <Right style={{ display:'flex',
+                     flexDirection: 'row',}}>
+                <Text style={{width: '40%'}}>删除全部</Text>
+                <Icon name='pint' style={{width: '10%'}}/>
+               </Right>
+           </View>
+        <View style={styles.container}>
+            <View >
+              <FlatList data={this.state.data}
               renderItem = {this._renderItem}
               keyExtractor={this._keyExtractor}/>
+            </View>
 
 
             </View>
-                <Button onPress={()=>this.props.navigation.dispatch(DrawerActions.openDrawer())}
-                        title="openDrawer Navigator"/>
             </View>
 
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+    },
+    bubble: {
+        backgroundColor: '#fff',
+        borderColor: '#ccc',
+        borderWidth: StyleSheet.hairlineWidth,
+        padding: 10,
+        borderRadius: 6,
+
+    },
+    time: {
+        textAlign: 'right',
+        color: '#bababa',
+        fontSize: 12,
+    },
+    List:{
+        height: '5%',
+        borderBottomWidth :1 ,
+        borderBottomColor: '#000',
+        marginBottom: 8,
+        paddingBottom:1,
+        display:'flex',
+        flexDirection: 'row',
+
+    }
+
+})
